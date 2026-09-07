@@ -1,8 +1,15 @@
 {
   "name": "focusguard-saas",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
+  "description": "Zero-Trust DNS filtering, DoH protection, parental controls and AdShield platform",
   "type": "module",
+  "author": "Alberto Trujillo Mingorance <alberto@trujillomingorance.com>",
+  "homepage": "https://focusguard.trujillomingorance.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atrumin16/focusguard-saas.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && npx esbuild worker/src/index.ts --bundle --minify --legal-comments=none --outfile=dist/_worker.js --format=esm --target=es2022 --platform=neutral",
