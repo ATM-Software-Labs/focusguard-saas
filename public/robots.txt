@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dns-query/
+
+Sitemap: https://focusguard.trujillomingorance.com/sitemap.xml

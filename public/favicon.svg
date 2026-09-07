@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="FocusGuard">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366f1"/>
+      <stop offset="0.55" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="20" y1="10" x2="44" y2="50" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded app tile -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bg)"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#shine)"/>
+  <!-- Shield -->
+  <path d="M32 12.5c6.8 3.2 12.4 4.3 16.8 4.6v14.2c0 9.7-5.9 16.8-16.8 21.2C21.1 48.1 15.2 41 15.2 31.3V17.1c4.4-.3 10-1.4 16.8-4.6z" fill="#0f172a" fill-opacity="0.22"/>
+  <path d="M32 14c6.2 2.9 11.3 3.9 15.3 4.2v13.1c0 8.8-5.3 15.2-15.3 19.2C21.9 46.3 16.7 39.9 16.7 31.1V18.2C20.7 17.9 25.8 16.9 32 14z" fill="#ffffff"/>
+  <!-- Lock body -->
+  <rect x="25.5" y="30.5" width="13" height="11.5" rx="2.2" fill="#4f46e5"/>
+  <!-- Lock shackle -->
+  <path d="M28.2 30.5v-3.4c0-2.1 1.7-3.8 3.8-3.8s3.8 1.7 3.8 3.8v3.4" fill="none" stroke="#4f46e5" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- Keyhole -->
+  <circle cx="32" cy="34.8" r="1.5" fill="#ffffff"/>
+  <rect x="31.25" y="35.6" width="1.5" height="3.2" rx="0.7" fill="#ffffff"/>
+</svg>

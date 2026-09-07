@@ -1,0 +1,27 @@
+{
+  "name": "FocusGuard Zero-Trust Shield",
+  "short_name": "FocusGuard",
+  "description": "Enterprise-grade Zero-Trust focus enforcement & parental shield powered by Cloudflare Edge",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#4f46e5",
+  "orientation": "any",
+  "categories": ["productivity", "security", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}
