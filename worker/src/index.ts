@@ -248,9 +248,9 @@ async function fetchDoHJsonWithFallback(domain: string, typeStr: string): Promis
 }
 
 /** Canonical transactional sender for FocusGuard app emails */
-const APP_FROM_EMAIL = 'alberto@trujillomingorance.com';
+const APP_FROM_EMAIL = 'support@yourdomain.com';
 const APP_FROM_NAME = 'FocusGuard';
-const APP_ACCOUNT_ID = '9c48e0ad7e36cf970f20839768fe8a64';
+const APP_ACCOUNT_ID = 'YOUR_CLOUDFLARE_ACCOUNT_ID';
 
 function decodeJwtSub(token: string): string | null {
   try {
@@ -2053,7 +2053,7 @@ Sitemap: https://focusguard.trujillomingorance.com/sitemap.xml
             const userId = payloadObj.sub;
             const dbUser = await env.DB.prepare("SELECT email, tier FROM users WHERE id = ?1").bind(userId).first() as any;
             const email = (dbUser?.email || '').toLowerCase();
-            const isFounder = email === 'alberto@trujillomingorance.com' || email === 'atrumin16@gmail.com';
+            const isFounder = email === 'support@yourdomain.com' || email === 'atrumin16@gmail.com';
             const tier = isFounder ? 'enterprise' : (dbUser?.tier || 'free');
             if (tier !== 'enterprise') {
               return new Response(JSON.stringify({ error: 'Enterprise plan required' }), {
@@ -2317,7 +2317,7 @@ Write-Host "Endpoint: $DohUrl" -ForegroundColor Gray
         const dbUser = await env.DB.prepare("SELECT tier FROM users WHERE id = ?1").bind(googleUser.sub).first() as any;
         let tier = dbUser ? (dbUser.tier || 'free') : 'free';
         
-        if (googleUser.email === 'alberto@trujillomingorance.com' || googleUser.email === 'atrumin16@gmail.com') {
+        if (googleUser.email === 'support@yourdomain.com' || googleUser.email === 'atrumin16@gmail.com') {
           tier = 'enterprise';
           await env.DB.prepare("UPDATE users SET tier = 'enterprise' WHERE id = ?1").bind(googleUser.sub).run();
         }
@@ -2504,7 +2504,7 @@ Write-Host "Endpoint: $DohUrl" -ForegroundColor Gray
           return new Response(JSON.stringify({ error: 'Código de verificación incorrecto.' }), { status: 400, headers: corsHeaders });
         }
 
-        let tier = (email === 'alberto@trujillomingorance.com' || email === 'atrumin16@gmail.com') ? 'enterprise' : 'free';
+        let tier = (email === 'support@yourdomain.com' || email === 'atrumin16@gmail.com') ? 'enterprise' : 'free';
         const pictureUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(pending.name)}&background=0D8ABC&color=fff`;
 
         const userRecord = {
@@ -2564,7 +2564,7 @@ Write-Host "Endpoint: $DohUrl" -ForegroundColor Gray
         }
 
         let tier = userRecord.tier || 'free';
-        if (email === 'alberto@trujillomingorance.com' || email === 'atrumin16@gmail.com') {
+        if (email === 'support@yourdomain.com' || email === 'atrumin16@gmail.com') {
           tier = 'enterprise';
         }
 
@@ -2743,7 +2743,7 @@ Write-Host "Endpoint: $DohUrl" -ForegroundColor Gray
       }
 
       const email = (dbUser?.email || '').toLowerCase();
-      const isFounder = email === 'alberto@trujillomingorance.com' || email === 'atrumin16@gmail.com';
+      const isFounder = email === 'support@yourdomain.com' || email === 'atrumin16@gmail.com';
       let tier = isFounder ? 'enterprise' : (dbUser?.tier || 'free');
       if (isFounder && dbUser?.tier !== 'enterprise') {
         try {
@@ -3052,7 +3052,7 @@ Write-Host "Endpoint: $DohUrl" -ForegroundColor Gray
 
     // Cloudflare Zero-Trust Gateway Rule Provisioner Endpoint
     if (url.pathname === '/api/admin/provision-gateway-rules' && request.method === 'POST') {
-      const accountId = env.CLOUDFLARE_ACCOUNT_ID || '9c48e0ad7e36cf970f20839768fe8a64';
+      const accountId = env.CLOUDFLARE_ACCOUNT_ID || 'YOUR_CLOUDFLARE_ACCOUNT_ID';
       const apiToken = env.CLOUDFLARE_API_TOKEN;
       if (!apiToken) {
         return new Response(JSON.stringify({ error: 'CLOUDFLARE_API_TOKEN no configurado' }), {
@@ -3110,7 +3110,7 @@ Write-Host "Endpoint: $DohUrl" -ForegroundColor Gray
       const customDomains = body.custom_domains || [];
       const userId = body.user_id || 'usr_master';
 
-      const accountId = env.CLOUDFLARE_ACCOUNT_ID || '9c48e0ad7e36cf970f20839768fe8a64';
+      const accountId = env.CLOUDFLARE_ACCOUNT_ID || 'YOUR_CLOUDFLARE_ACCOUNT_ID';
       const apiToken = env.CLOUDFLARE_API_TOKEN;
       if (!apiToken) {
         return new Response(JSON.stringify({ error: 'CLOUDFLARE_API_TOKEN no configurado' }), {
@@ -3254,7 +3254,7 @@ Write-Host "Endpoint: $DohUrl" -ForegroundColor Gray
         }
 
         const email = (dbUser.email || '').toLowerCase();
-        if (email === 'alberto@trujillomingorance.com' || email === 'atrumin16@gmail.com') {
+        if (email === 'support@yourdomain.com' || email === 'atrumin16@gmail.com') {
           if (dbUser.tier !== 'enterprise') {
             await env.DB.prepare("UPDATE users SET tier = 'enterprise' WHERE id = ?1").bind(userId).run();
           }
@@ -3707,3 +3707,5 @@ async function provisionZeroTrustEndpoint(customerId: string, env: Env) {
   // This is kept out of the critical path using ctx.waitUntil()
   console.log(`Provisioning Zero Trust for ${customerId}`);
 }
+
+

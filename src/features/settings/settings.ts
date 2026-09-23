@@ -13,7 +13,7 @@ import {
 } from '../generator/generator';
 import type { ExportData } from '../../types';
 
-const APP_FROM_EMAIL = 'alberto@trujillomingorance.com';
+const APP_FROM_EMAIL = 'support@yourdomain.com';
 
 const STORAGE_KEYS = {
   PIN: 'focusguard_master_pin',
@@ -859,4 +859,5 @@ function initInteractiveSettingsUI() {
     }
   });
 }
+
 

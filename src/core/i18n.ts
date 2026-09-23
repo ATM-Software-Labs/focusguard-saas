@@ -116,7 +116,7 @@ export const translations: Record<string, Record<string, string>> = {
     badge_eu: "European Infrastructure (GDPR)",
     badge_stripe: "Stripe Secured Payments",
     badge_zerologs: "Zero-Logs DoH DNS",
-    footer_contact_email: "Email: alberto@trujillomingorance.com",
+    footer_contact_email: "Email: support@yourdomain.com",
     footer_sla: "SLA Uptime: 99.99% Cloudflare Edge",
     footer_encryption: "Encryption: DoT Port 853 / TLS 1.3",
     footer_odr_link: "EU Dispute Resolution (ODR)",
@@ -270,7 +270,7 @@ export const translations: Record<string, Record<string, string>> = {
       <h2 id="privacy-1">1. Controller</h2>
       <div class="legal-table-wrap"><table class="legal-table"><tbody>
         <tr><th>Controller</th><td>FocusGuard (operated by Alberto Trujillo Mingorance)</td></tr>
-        <tr><th>Contact / DPO</th><td><code>alberto@trujillomingorance.com</code></td></tr>
+        <tr><th>Contact / DPO</th><td><code>support@yourdomain.com</code></td></tr>
         <tr><th>Service URL</th><td><code>https://focusguard.trujillomingorance.com</code></td></tr>
       </tbody></table></div>
       <h2 id="privacy-2">2. What we process</h2>
@@ -287,7 +287,7 @@ export const translations: Record<string, Record<string, string>> = {
         <tr><td>Stripe Payments Europe</td><td>Cards and invoices</td><td>PCI-DSS Level 1</td></tr>
       </tbody></table></div>
       <h2 id="privacy-4">4. Your rights</h2>
-      <p>You may request access, rectification, erasure, portability, restriction or objection at <code>alberto@trujillomingorance.com</code>. You can also clear local session data from Account settings. You may lodge a complaint with the AEPD or your local authority.</p>
+      <p>You may request access, rectification, erasure, portability, restriction or objection at <code>support@yourdomain.com</code>. You can also clear local session data from Account settings. You may lodge a complaint with the AEPD or your local authority.</p>
       <h2 id="privacy-5">5. Children</h2>
       <p>The dashboard is for the adult account holder. Filtering is applied to devices they administer. We do not use children’s browsing data for marketing.</p>
       <h2 id="privacy-6">6. Security</h2>
@@ -320,7 +320,7 @@ export const translations: Record<string, Record<string, string>> = {
       <div class="legal-callout legal-callout--ok"><strong>14-day full refund</strong>First paid purchase of Pro or Enterprise: 100% refund within 14 calendar days, no justification required.</div>
       <h2 id="refund-1">1. How to request a refund</h2>
       <ol class="legal-steps">
-        <li>Open Account settings → Manage billing (Stripe portal), or email <code>alberto@trujillomingorance.com</code> from the account address.</li>
+        <li>Open Account settings → Manage billing (Stripe portal), or email <code>support@yourdomain.com</code> from the account address.</li>
         <li>Include the payment email and approximate purchase date.</li>
         <li>We confirm and Stripe returns the charge to the original payment method.</li>
       </ol>
@@ -341,7 +341,7 @@ export const translations: Record<string, Record<string, string>> = {
       <div class="legal-table-wrap"><table class="legal-table"><tbody>
         <tr><th>Name</th><td>FocusGuard — Alberto Trujillo Mingorance</td></tr>
         <tr><th>Public site</th><td><code>https://focusguard.trujillomingorance.com</code></td></tr>
-        <tr><th>Email</th><td><code>alberto@trujillomingorance.com</code></td></tr>
+        <tr><th>Email</th><td><code>support@yourdomain.com</code></td></tr>
         <tr><th>Infrastructure</th><td>Cloudflare Workers / Pages (EU Edge nodes)</td></tr>
       </tbody></table></div>
       <h2 id="notice-2">2. Purpose of the site</h2>
@@ -467,7 +467,7 @@ export const translations: Record<string, Record<string, string>> = {
     badge_eu: "Infraestructura Europea (RGPD)",
     badge_stripe: "Pagos Protegidos por Stripe",
     badge_zerologs: "DNS DoH Cero Registros",
-    footer_contact_email: "Email: alberto@trujillomingorance.com",
+    footer_contact_email: "Email: support@yourdomain.com",
     footer_sla: "SLA Uptime: 99.99% Cloudflare Edge",
     footer_encryption: "Cifrado: DoT Puerto 853 / TLS 1.3",
     footer_odr_link: "Resolución Litigios UE (ODR)",
@@ -663,7 +663,7 @@ export const translations: Record<string, Record<string, string>> = {
           </button>
           <div class="ms-accordion-panel">
             <p><strong>Responsable:</strong> FocusGuard (operado por Alberto Trujillo Mingorance).</p>
-            <p><strong>Contacto / DPO:</strong> <code>alberto@trujillomingorance.com</code></p>
+            <p><strong>Contacto / DPO:</strong> <code>support@yourdomain.com</code></p>
             <p><strong>Sitio Web:</strong> <code>https://focusguard.trujillomingorance.com</code></p>
           </div>
         </div>
@@ -713,7 +713,7 @@ export const translations: Record<string, Record<string, string>> = {
             <span class="ms-accordion-icon">+</span>
           </button>
           <div class="ms-accordion-panel">
-            <p>Conforme al RGPD (Reglamento UE 2016/679), tienes derecho a solicitar el acceso, rectificación, supresión, portabilidad y limitación de tus datos escribiendo a <code>alberto@trujillomingorance.com</code>. También puedes eliminar tus datos locales desde la sección Ajustes.</p>
+            <p>Conforme al RGPD (Reglamento UE 2016/679), tienes derecho a solicitar el acceso, rectificación, supresión, portabilidad y limitación de tus datos escribiendo a <code>support@yourdomain.com</code>. También puedes eliminar tus datos locales desde la sección Ajustes.</p>
           </div>
         </div>
       </div>
@@ -775,7 +775,7 @@ export const translations: Record<string, Record<string, string>> = {
             <p>Puedes solicitar tu devolución de dos formas:</p>
             <ul>
               <li>Accediendo a <strong>Ajustes ➔ Facturación</strong> y cancelando la suscripción en el Portal de Stripe.</li>
-              <li>Enviando un correo electrónico a <code>alberto@trujillomingorance.com</code> indicando el email de tu cuenta.</li>
+              <li>Enviando un correo electrónico a <code>support@yourdomain.com</code> indicando el email de tu cuenta.</li>
             </ul>
             <p>Una vez procesada la devolución por Stripe, el importe se acredita en tu tarjeta en un plazo habitual de 5 a 10 días hábiles según tu entidad bancaria.</p>
           </div>
@@ -796,7 +796,7 @@ export const translations: Record<string, Record<string, string>> = {
           <div class="ms-accordion-panel">
             <p><strong>Titular del servicio:</strong> FocusGuard — Alberto Trujillo Mingorance.</p>
             <p><strong>Sitio Web Oficial:</strong> <code>https://focusguard.trujillomingorance.com</code></p>
-            <p><strong>Contacto Directo:</strong> <code>alberto@trujillomingorance.com</code></p>
+            <p><strong>Contacto Directo:</strong> <code>support@yourdomain.com</code></p>
             <p><strong>Infraestructura:</strong> Cloudflare Workers & Pages (Nodos de red Edge en la Unión Europea).</p>
           </div>
         </div>
@@ -943,7 +943,7 @@ export const translations: Record<string, Record<string, string>> = {
             <span class="ms-accordion-icon">−</span>
           </button>
           <div class="ms-accordion-panel">
-            <p>FocusGuard — Alberto Trujillo Mingorance · <code>alberto@trujillomingorance.com</code></p>
+            <p>FocusGuard — Alberto Trujillo Mingorance · <code>support@yourdomain.com</code></p>
           </div>
         </div>
       </div>
@@ -1070,7 +1070,7 @@ export const translations: Record<string, Record<string, string>> = {
             <span class="ms-accordion-icon">−</span>
           </button>
           <div class="ms-accordion-panel">
-            <p>FocusGuard — Alberto Trujillo Mingorance · <code>alberto@trujillomingorance.com</code></p>
+            <p>FocusGuard — Alberto Trujillo Mingorance · <code>support@yourdomain.com</code></p>
           </div>
         </div>
       </div>
@@ -1197,7 +1197,7 @@ export const translations: Record<string, Record<string, string>> = {
             <span class="ms-accordion-icon">−</span>
           </button>
           <div class="ms-accordion-panel">
-            <p>FocusGuard — Alberto Trujillo Mingorance · <code>alberto@trujillomingorance.com</code></p>
+            <p>FocusGuard — Alberto Trujillo Mingorance · <code>support@yourdomain.com</code></p>
           </div>
         </div>
       </div>
@@ -1257,4 +1257,5 @@ export function applyTranslations() {
   document.documentElement.lang = userLang;
   return dict;
 }
+
 

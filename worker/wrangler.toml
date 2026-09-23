@@ -6,12 +6,12 @@ compatibility_flags = [ "nodejs_compat" ]
 # KV Binding for Session/JWT Validation
 [[kv_namespaces]]
 binding = "SESSIONS_KV"
-id = "22b87e67e3a944c68dfb7d5f4d3cbb1c"
+id = "YOUR_KV_NAMESPACE_ID"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "focusguard_db"
-database_id = "3424da7e-190a-49be-93bb-1ec9ad7e190f"
+database_id = "YOUR_D1_DATABASE_ID"
 
 # [vars]
 # CLOUDFLARE_API_TOKEN = "configured via wrangler secret put"
@@ -22,3 +22,4 @@ database_id = "3424da7e-190a-49be-93bb-1ec9ad7e190f"
 [build]
 command = "npm run build"
 watch_dir = "src"
+

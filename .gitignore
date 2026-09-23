@@ -29,3 +29,4 @@ scratch_*
 *.njsproj
 *.sln
 *.sw?
+.cache
