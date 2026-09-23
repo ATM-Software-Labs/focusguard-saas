@@ -4,7 +4,7 @@
   "private": true,
   "description": "Zero-Trust DNS filtering, DoH protection, parental controls and AdShield platform",
   "type": "module",
-  "author": "Alberto Trujillo Mingorance <alberto@trujillomingorance.com>",
+  "author": "Alberto Trujillo Mingorance <support@yourdomain.com>",
   "homepage": "https://focusguard.trujillomingorance.com",
   "repository": {
     "type": "git",
@@ -23,3 +23,4 @@
     "vite": "^8.2.0"
   }
 }
+

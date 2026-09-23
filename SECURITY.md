@@ -9,7 +9,7 @@ If you discover a security vulnerability within this repository or the live serv
 ### Disclosure Guidelines
 
 - Do not open public issues or discussions for security vulnerabilities.
-- Report findings directly to Alberto Trujillo Mingorance via email at `security@trujillomingorance.com` or `alberto@trujillomingorance.com`.
+- Report findings directly to Alberto Trujillo Mingorance via email at `security@yourdomain.com` or `security@yourdomain.com`.
 - Provide sufficient details, including reproduction steps, affected endpoints, and potential impact.
 
 ### Response Timelines
