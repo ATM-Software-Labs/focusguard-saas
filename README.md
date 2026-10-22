@@ -1,92 +1,116 @@
-# FocusGuard SaaS and AdShield - Zero-Trust DNS Protection Platform
+<p align="center">
+  <img src="docs/banner.png" alt="FocusGuard — Filtrado DNS sin tocar el router" width="100%" />
+</p>
 
-[![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-Deployed-F38020?style=flat-square&logo=cloudflare&logoColor=white)](https://focusguard.trujillomingorance.com)
-[![Status](https://img.shields.io/badge/Status-Live_Production-107c41?style=flat-square)](#)
-[![Security](https://img.shields.io/badge/Security-Zero--Trust_DNS-0078d4?style=flat-square)](#)
-[![License](https://img.shields.io/badge/License-Proprietary-blue?style=flat-square)](#)
+<p align="center">
+  <strong>Panel para filtrar anuncios, rastreadores y categorías de contenido por DNS, con control parental y listas para Pi-hole, sobre Cloudflare Zero Trust Gateway.</strong><br/>
+  <em>DNS filtering dashboard (ads, trackers, parental controls) built on Cloudflare Zero Trust Gateway, with Pi-hole and dnsmasq exports.</em>
+</p>
 
-Production Gateway: [focusguard.trujillomingorance.com](https://focusguard.trujillomingorance.com)
+<p align="center">
+  <a href="https://focusguard.trujillomingorance.com"><b>focusguard.trujillomingorance.com</b></a> ·
+  <a href="SECURITY.md">Seguridad</a>
+</p>
 
-A high-performance DNS security platform offering DNS-over-HTTPS (DoH) filtering, AdShield advertisement and tracker blocking, and granular parental controls deployed on Cloudflare's global edge network.
-
----
-
-## Core Capabilities and Architecture
-
-1. DNS-over-HTTPS (DoH) Filtering: Real-time blocking of malicious domains, advertising networks, telemetry trackers, and phishing origins directly at resolution time with sub-5ms latency.
-2. Parental Controls and Profiles: Granular category restriction (adult content, gambling, social networks, gaming, video streaming) applied per device or network profile.
-3. Interactive Management Console: A responsive single-page application built in TypeScript offering real-time query counters, blocked domain telemetry, access log audits, and guided setup with dynamic QR codes for mobile devices, home routers, and operating systems.
-4. Edge Database and Session State: Serverless persistence powered by Cloudflare D1 SQL database (`focusguard_db`) and Cloudflare Workers KV for ultra-fast session validation and blocklist lookups.
-5. Subscription Billing: Commercial tier monetization integrated with Stripe Checkout and Customer Portal webhooks.
-
----
-
-## Enterprise Branching Model
-
-| Branch | Purpose | Deployment Target |
-| :--- | :--- | :--- |
-| `main` | Production Release | Deployed live to `focusguard.trujillomingorance.com` |
-| `develop` | Staging & Integration | DNS filter list rule testing, Stripe integration QA, and feature PR merges |
+<p align="center">
+  <img alt="Licencia" src="https://img.shields.io/badge/licencia-todos%20los%20derechos%20reservados-3f3f46" />
+  <img alt="Cloudflare Pages" src="https://img.shields.io/badge/Cloudflare-Pages%20%2B%20D1%20%2B%20KV-F38020?logo=cloudflare&logoColor=white" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Vite-111827" />
+  <img alt="Zero Trust" src="https://img.shields.io/badge/Cloudflare-Zero%20Trust%20Gateway-047857" />
+</p>
 
 ---
 
-## Repository Structure
+## Capturas
 
+<p align="center"><img src="docs/screenshots/desktop.png" width="820" alt="Portada de FocusGuard en escritorio" /></p>
+
+## Funciones
+
+- **Filtrado DNS** con reglas de Cloudflare Zero Trust Gateway: anuncios, rastreadores, malware y categorías (adultos, apuestas, redes sociales, juegos, vídeo).
+- **AdShield:** perfiles de bloqueo de anuncios y listas por paquetes.
+- **Control parental** con interruptor rápido y **horarios** por perfil.
+- **Exportar listas** para otros bloqueadores: `rules.json`, lista de Pi-hole y `dnsmasq.conf`.
+- **Configuración guiada** de dispositivos, con códigos QR y página para Android.
+- **Panel** con contadores de consultas y dominios bloqueados, diagnóstico y ajustes.
+- **Cuentas** con Google, X o correo (verificación y recuperación por email).
+- **Suscripción** preparada con Stripe Checkout, portal de cliente y webhook.
+
+## Stack
+
+| Capa | Tecnología |
+|---|---|
+| Frontend | TypeScript + Vite (SPA sin framework) y service worker |
+| Hosting | **Cloudflare Pages** en modo avanzado (`dist/_worker.js`) |
+| Backend | Worker en TypeScript (`worker/src/`), empaquetado con esbuild |
+| Datos | **Cloudflare D1** (`focusguard_db`) y **Workers KV** (`SESSIONS_KV`) |
+| DNS | **Cloudflare Zero Trust Gateway** (reglas y ubicaciones por API) |
+| Pagos | Stripe |
+| Email | Resend y Cloudflare Email |
+
+## Arquitectura
+
+```mermaid
+flowchart LR
+  U["Navegador<br/>panel"] --> P["Cloudflare Pages<br/>_worker.js"]
+  P --> D1[("D1 · usuarios, reglas,<br/>horarios, analítica")]
+  P --> KV[("KV · sesiones")]
+  P -->|API de Cloudflare| GW["Zero Trust Gateway<br/>reglas y ubicaciones"]
+  P --> ST["Stripe"]
+  P --> EM["Resend / Cloudflare Email"]
+  DEV["Dispositivos"] -->|DNS| GW
 ```
-focusguard-saas/
-├── public/                  # Static assets, Web App Manifest, service worker, favicons
-├── src/                     # Frontend SPA source code (TypeScript)
-│   ├── core/                # System configuration, internationalization (i18n), UI utilities
-│   ├── features/            # Business feature modules (AdShield, Auth, Dashboard, Stripe, Settings)
-│   ├── types/               # TypeScript interfaces, domain models, and API schemas
-│   ├── main.ts              # Single-page application bootstrap
-│   └── style.css            # Corporate slate-navy glassmorphism design tokens
-├── worker/                  # Edge DNS filtering and DoH proxy worker
-│   ├── src/                 # Edge router, blocklist evaluator, and analytics reporter
-│   └── wrangler.toml        # Worker configuration and KV bindings
-├── schema.sql               # Cloudflare D1 relational database schema
-├── vite.config.ts           # Bundler build configuration
-└── wrangler.toml            # Pages deployment configuration
-```
 
----
+## Seguridad
 
-## Technical Stack
+- **Sesiones** con JWT verificados en el servidor y guardados en KV.
+- **Token de Cloudflare** solo en el servidor, para gestionar las reglas de Gateway.
+- **Webhook de Stripe** con firma verificada.
+- Detalles y contacto en [SECURITY.md](SECURITY.md).
 
-- Frontend: TypeScript, Vite 8, Semantic CSS3 (Unified corporate dark slate palette)
-- Edge Backend: Cloudflare Pages Functions and Cloudflare Workers (ES Modules)
-- Data Persistence: Cloudflare D1 Database (`focusguard_db`), Cloudflare KV (`SESSIONS_KV`)
-- Authentication: Google Identity Services (GSI) and JWT edge verification
-- Payment Processing: Stripe API (Checkout Sessions & Webhooks)
+## Desarrollo local
 
----
-
-## Local Development and Build
+Requisitos: **Node.js ≥ 20**.
 
 ```bash
-# Install dependencies
+git clone https://github.com/ATM-Software-Labs/focusguard-saas.git && cd focusguard-saas
 npm install
-
-# Run TypeScript compilation and Vite dev server
-npm run dev
-
-# Build production assets (Frontend + Worker bundle)
-npm run build
-
-# Deploy to Cloudflare Pages
-npx wrangler pages deploy dist --project-name focusguard --commit-dirty=true
+npm run dev            # Vite en http://localhost:5173 (API en :8787)
+npm run build          # tsc + Vite + _worker.js
 ```
 
----
+Esquema de base de datos: `schema.sql` (usuarios, tenants, reglas, horarios y analítica).
 
-## Maintainer and Ownership
+## Despliegue
 
-Alberto Trujillo Mingorance  
-- Website: [alberto.trujillomingorance.com](https://alberto.trujillomingorance.com)  
-- GitHub: [@atrumin16](https://github.com/atrumin16)
+El proyecto de Cloudflare Pages `focusguard` está conectado a GitHub: cada push a `main` compila y publica en `focusguard.trujillomingorance.com`. También se puede publicar con `npm run deploy`.
 
----
+### Variables y bindings (solo nombres)
 
-## License and Confidentiality
+| Nombre | Tipo | Uso |
+|---|---|---|
+| `DB` | binding D1 | Base de datos `focusguard_db` |
+| `SESSIONS_KV` | binding KV | Sesiones |
+| `JWT_SECRET` | secreto | Firma de sesión |
+| `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN` | variable / secreto | Gestión de Zero Trust Gateway |
+| `X_CLIENT_ID`, `X_CLIENT_SECRET` | variable / secreto | Acceso con X |
+| `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` | secretos | Pagos |
+| `RESEND_API_KEY` | secreto | Correos de cuenta |
+| `GROQ_API_KEY`, `TRUJILLO_AI_API_KEY` | secretos, opcionales | Clasificación de dominios con IA |
 
-Copyright (c) 2026 Alberto Trujillo Mingorance. All rights reserved. Private and confidential proprietary software.
+## Estructura
+
+```
+src/core/          configuración, i18n y utilidades
+src/features/      adshield, auth, dashboard, diagnostics, generator, pihole, settings, stripe
+worker/src/        backend (rutas /api/*, listas, Gateway, Stripe)
+public/            _headers, manifest, service worker, iconos
+schema.sql         esquema de D1
+docs/              banner y capturas
+```
+
+## Licencia
+
+Todos los derechos reservados © 2026 Alberto Trujillo Mingorance.
+
+<p align="center"><sub>© 2026 ATM Software Labs · <a href="https://trujillomingorance.com">trujillomingorance.com</a></sub></p>
