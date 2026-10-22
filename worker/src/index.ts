@@ -1163,7 +1163,7 @@ Sitemap: https://focusguard.trujillomingorance.com/sitemap.xml
         try {
           const aiKey = env.GROQ_API_KEY || env.TRUJILLO_AI_API_KEY;
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 2000);
+          const timeoutId = setTimeout(() => controller.abort(), 3000);
 
           const aiResp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
             method: 'POST',
@@ -1172,7 +1172,8 @@ Sitemap: https://focusguard.trujillomingorance.com/sitemap.xml
               'Authorization': `Bearer ${aiKey}`
             },
             body: JSON.stringify({
-              model: 'llama-3.1-8b-instant',
+              // llama-3.1-8b-instant ya no está disponible para la clave de Groq
+              model: 'openai/gpt-oss-20b',
               messages: [
                 {
                   role: 'system',
@@ -1185,7 +1186,10 @@ Sitemap: https://focusguard.trujillomingorance.com/sitemap.xml
               ],
               temperature: 0.1,
               response_format: { type: 'json_object' },
-              max_tokens: 250
+              // el razonamiento oculto también consume max_tokens
+              max_tokens: 250 + 256,
+              reasoning_format: 'hidden',
+              reasoning_effort: 'low'
             }),
             signal: controller.signal
           });
@@ -1205,7 +1209,7 @@ Sitemap: https://focusguard.trujillomingorance.com/sitemap.xml
                 reason: parsedAi.reason || heuristicRes.reason,
                 mechanisms: Array.isArray(parsedAi.mechanisms) ? parsedAi.mechanisms : heuristicRes.mechanisms,
                 actionRecommendation: parsedAi.isThreat ? 'block' : 'allow',
-                engine: 'Trujillo AI Neural LLM Scanner (Llama 3.1 8B)'
+                engine: 'Trujillo AI Neural LLM Scanner (GPT-OSS 20B · Groq)'
               }), { status: 200, headers: corsHeaders });
             }
           }
